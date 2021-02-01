@@ -113,9 +113,9 @@ var startExperiment = function(event) {
 
 var nextTrial = function() {
     ctx.cpt++;
-    if(ctx.trials[ctx.cpt][ctx.participantIndex]!=currentResult.pIndex){
+    if((typeof ctx.trials[ctx.cpt] == "undefined") || (ctx.trials[ctx.cpt][ctx.participantIndex]!=currentResult.pIndex)){
+      //currentResult.pIndex = ctx.trials[ctx.cpt][ctx.participantIndex];
       displayDownload();
-      currentResult.pIndex = ctx.trials[ctx.cpt][ctx.participantIndex];
     }else{
       console.log(ctx.trials[ctx.cpt][ctx.participantIndex]);
       displayInstructions();
@@ -140,7 +140,7 @@ var displayDownload = function() {
 
   d3.select("#instructions")
     .append("p")
-    .html("You can now download the log file by clicking on the download button and then the file name and send it at florian.apavou@u-psud.fr");
+    .html("You can now download the log file and send it at florian.apavou@u-psud.fr");
 
 }
 
@@ -167,10 +167,10 @@ var displayInstructions = function() {
   d3.select("#instructions")
     .append("p")
     .html("Press <code>Enter</code> key when ready to start.");
-  var step = ctx.trials[ctx.cpt][ctx.trialIndex]%45;
-  if(step == 0){
-    step = 46;
-  }
+    var step = ctx.trials[ctx.cpt][ctx.trialIndex]%45;
+    if(step == 0){
+      step = 46;
+    }
   d3.select("#instructions")
     .append("p")
     .html("Step: "+step+"/46");
@@ -466,8 +466,8 @@ var downloadLogs = function(event) {
   var downloadLink = d3.select("form")
   .append("a")
   .attr("href",encodedUri)
-  .attr("download","logs_"+ctx.trials[ctx.cpt][ctx.participantIndex]+"_"+Date.now()+".csv")
-  .text("logs_"+ctx.trials[ctx.cpt][ctx.participantIndex]+"_"+Date.now()+".csv");
+  .attr("download","logs_"+currentResult.pIndex+"_"+Date.now()+".csv")
+  .text("logs_"+currentResult.pIndex+"_"+Date.now()+".csv");
 }
 
 
