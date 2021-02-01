@@ -167,10 +167,13 @@ var displayInstructions = function() {
   d3.select("#instructions")
     .append("p")
     .html("Press <code>Enter</code> key when ready to start.");
-
+  var step = ctx.trials[ctx.cpt][ctx.trialIndex]%45;
+  if(step == 0){
+    step = 46;
+  }
   d3.select("#instructions")
     .append("p")
-    .html("Step: "+ctx.trials[ctx.cpt][ctx.trialIndex]%46+"/46");
+    .html("Step: "+step+"/46");
 
 }
 /*
