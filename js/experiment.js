@@ -170,7 +170,7 @@ var displayInstructions = function() {
 
   d3.select("#instructions")
     .append("p")
-    .html("Step: "+ctx.trials[ctx.cpt][ctx.trialIndex]%45 "/45");
+    .html("Step: "+ctx.trials[ctx.cpt][ctx.trialIndex]%45+"/45");
 
 }
 /*
