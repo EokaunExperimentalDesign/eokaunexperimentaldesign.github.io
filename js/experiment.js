@@ -140,7 +140,7 @@ var displayDownload = function() {
 
   d3.select("#instructions")
     .append("p")
-    .html("You can now download the log file and send it at florian.apavou@u-psud.fr");
+    .html("You can now download the log file by clicking on the download button and then the file name and send it at florian.apavou@u-psud.fr");
 
 }
 
@@ -170,7 +170,7 @@ var displayInstructions = function() {
 
   d3.select("#instructions")
     .append("p")
-    .html("Step: "+ctx.trials[ctx.cpt][ctx.trialIndex]%45+"/45");
+    .html("Step: "+ctx.trials[ctx.cpt][ctx.trialIndex]%46+"/46");
 
 }
 /*
